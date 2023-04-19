@@ -50,9 +50,8 @@ while True:
         if len(liner)>=1:
              mov=movimiento.wait_for_motion()
              if mov:
-                  print("movimirento detectado")
-             else:
-                  print("no se dectecta movimiento ")
+                  liner.append(movimiento.dicionariovalue)
+            
              
              conec.update_all_documents("VIDA","sensoresValue",liner)
              liner.clear()

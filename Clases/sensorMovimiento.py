@@ -1,3 +1,4 @@
+import datetime
 import RPi.GPIO as GPIO
 import time
 
@@ -22,4 +23,8 @@ class MotionSensor:
         else:
             GPIO.output(self.led_pin, GPIO.LOW)
             return False
+        
+    def dicionariovalue(self,tipo):
+         temp={"Clave":tipo[4].get('Clave'),"Sensor":{"Clave":tipo[4].get('Clave'),"Tipo":tipo[4].get('Tipo'),"Ubicacion":tipo[4].get('Ubicacion'),"Pines":tipo[4].get('Pines')},"Value":1,"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+         return temp
 
