@@ -38,7 +38,7 @@ con=conec.connect()
 conec.update_all_documents("VIDA","SensoresInfo",sensores)
 
 #coneccion 
-
+liner=[]
 
 while True:
      
@@ -50,7 +50,9 @@ while True:
         if len(liner)>=1:
              mov=movimiento.wait_for_motion()
              if mov:
-                  liner.append(movimiento.dicionariovalue)
+                  valores=movimiento.dicionariovalue
+                  
+                  conec.update_all_documents("VIDA","sensoresValue",valores)
             
              
              conec.update_all_documents("VIDA","sensoresValue",liner)
