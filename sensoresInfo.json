@@ -1,0 +1,32 @@
+[
+     {
+          "Clave": "DW1A",
+          "Tipo": "DTH11",
+          "Ubicacion": "Dentro de la tienda",
+          "Pines": 11
+     },
+     {
+          "Clave": "DZ06",
+          "Tipo": "DTH11",
+          "Ubicacion": "Afuera de la tienda",
+          "Pines": 12
+     },
+     {
+          "Clave": "PJC0",
+          "Tipo": "GAS",
+          "Ubicacion": "Dentro de la Tienda",
+          "Pines": "A0"
+     },
+     {
+          "Clave": "FTC3",
+          "Tipo": "LDR",
+          "Ubicacion": "Techo de la Tienda",
+          "Pines": "A3"
+     },
+     {
+          "Clave": "L6QU",
+          "Tipo": "Ultrasonico",
+          "Ubicacion": "Entrada de la tienda",
+          "Pines": "trigger_pin: 8, echo_pin: 9"
+     }
+]
