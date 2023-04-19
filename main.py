@@ -50,9 +50,10 @@ while True:
         if len(liner)>=1:
              
              print(liner)
+             movimiento.wait_for_motion()
              conec.update_all_documents("VIDA","sensoresValue",liner)
              liner.clear()
-             #guardardatosdeSensores.lista.clear()
+             
              
         
         

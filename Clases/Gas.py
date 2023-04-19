@@ -1,3 +1,4 @@
+import datetime
 from Clases.Lista import lista
 
 class Gas(lista):
@@ -6,4 +7,4 @@ class Gas(lista):
         
       
     def crearsesnor(self,Tipo,Ubicacion,Pines,Clave):
-        return{"Clave":Clave,"Tipo":Tipo,"Ubicacion":Ubicacion,"Pines":Pines}
+        return{"Clave":Clave,"Tipo":Tipo,"Ubicacion":Ubicacion,"Pines":Pines,"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
