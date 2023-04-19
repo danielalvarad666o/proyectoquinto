@@ -2,17 +2,25 @@ import RPi.GPIO as GPIO
 import time
 
 class MotionSensor:
-    def __init__(self, pin):
-        self.pin = pin
+    def __init__(self, led_pin, pir_pin):
+        self.led_pin = led_pin
+        self.pir_pin = pir_pin
         self.setup()
     
     def setup(self):
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(self.pin, GPIO.IN)
+        GPIO.setup(self.led_pin, GPIO.OUT)
+        GPIO.setup(self.pir_pin, GPIO.IN)
     
     def wait_for_motion(self):
-            if GPIO.input(self.pin):
-                print("Motion detected!")
-                return GPIO.input(self.pin)
-                
-            time.sleep(0.1)
+        value = GPIO.input(self.pir_pin)
+        if value == GPIO.HIGH:
+            GPIO.output(self.led_pin, GPIO.HIGH)
+            time.sleep(0.05)
+            GPIO.output(self.led_pin, GPIO.LOW)
+            time.sleep(0.05)
+            return True
+        else:
+            GPIO.output(self.led_pin, GPIO.LOW)
+            return False
+

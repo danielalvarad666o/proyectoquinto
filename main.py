@@ -2,7 +2,7 @@
 from Clases import mongo,serialclase,Claves,Gas,LDR,Movimiento,Temperatura,Ultrasonico,JSON,SensoresValues,sensorMovimiento
 
 #instanciar 
-movimiento=sensorMovimiento.MotionSensor(14)
+movimiento=sensorMovimiento.MotionSensor(21,14)
 serial=serialclase.SensorData()
 clavessensores=Claves.Claves()
 sensorGas=Gas.Gas()
