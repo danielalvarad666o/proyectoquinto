@@ -4,6 +4,7 @@ import time
 
 class MotionSensor:
     def __init__(self, led_pin, pir_pin):
+        self.dicionario={}
         self.led_pin = led_pin
         self.pir_pin = pir_pin
         self.setup()
@@ -25,6 +26,6 @@ class MotionSensor:
             return False
         
     def dicionariovalue(self,tipo):
-         temp={"Clave":tipo[4].get('Clave'),"Sensor":{"Clave":tipo[4].get('Clave'),"Tipo":tipo[4].get('Tipo'),"Ubicacion":tipo[4].get('Ubicacion'),"Pines":tipo[4].get('Pines')},"Value":1,"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-         return temp
+         self.dicionario={"Clave":tipo[4].get('Clave'),"Sensor":{"Clave":tipo[5].get('Clave'),"Tipo":tipo[5].get('Tipo'),"Ubicacion":tipo[5].get('Ubicacion'),"Pines":tipo[5].get('Pines')},"Value":1,"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+         return self.dicionario
 

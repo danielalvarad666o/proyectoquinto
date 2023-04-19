@@ -50,9 +50,9 @@ while True:
         if len(liner)>=1:
              mov=movimiento.wait_for_motion()
              if mov:
-                  valores=movimiento.dicionariovalue
-                  
-                  conec.update_all_documents("VIDA","sensoresValue",valores)
+                  valores=movimiento.dicionariovalue(sen)
+                  liner.append(valores)
+                  #conec.update_all_documents("VIDA","sensoresValue",valores)
             
              
              conec.update_all_documents("VIDA","sensoresValue",liner)
