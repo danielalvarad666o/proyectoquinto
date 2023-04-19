@@ -48,13 +48,11 @@ while True:
      if con: 
         liner=guardardatosdeSensores.crearsensorvalue(line,sen)
         if len(liner)>=1:
-             
-             print(liner)
              mov=movimiento.wait_for_motion()
              if mov:
                   print("movimirento detectado")
              else:
-                  print()
+                  print("no se dectecta movimiento ")
              
              conec.update_all_documents("VIDA","sensoresValue",liner)
              liner.clear()
