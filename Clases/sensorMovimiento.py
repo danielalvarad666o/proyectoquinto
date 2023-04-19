@@ -16,9 +16,8 @@ class MotionSensor:
         value = GPIO.input(self.pir_pin)
         if value == GPIO.HIGH:
             GPIO.output(self.led_pin, GPIO.HIGH)
-            time.sleep(0.05)
+            time.sleep(5)  # LED stays on for 5 seconds
             GPIO.output(self.led_pin, GPIO.LOW)
-            time.sleep(0.05)
             return True
         else:
             GPIO.output(self.led_pin, GPIO.LOW)
