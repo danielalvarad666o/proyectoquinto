@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 class MotorDriver:
-    def __init__(self, in1_pin=4, in2_pin=5):
+    def __init__(self, in1_pin=6, in2_pin=5):
         self.in1 = in1_pin
         self.in2 = in2_pin
         GPIO.setmode(GPIO.BCM)
