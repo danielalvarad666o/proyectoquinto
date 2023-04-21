@@ -6,7 +6,7 @@ import requests
 class Controller:
     def __init__(self) -> None:
         self.status = True
-        self.led = LEDController(16)
+        
         self.motor = MotorDriver()
         self.motor.stop()
     
