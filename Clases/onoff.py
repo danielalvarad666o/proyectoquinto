@@ -1,6 +1,6 @@
 from sseclient import SSEClient
 
-from rueda import MotorDriver
+from Clases.rueda import MotorDriver
 import requests
 
 class Controller:
