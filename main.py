@@ -3,7 +3,7 @@ import time
 import multiprocessing
 
 def kobeniFunction():
-    os.system('python /home/daniel/proyectoquinto')
+    os.system('python /home/daniel/proyectoquinto.py')
     
 def hanekawaFunction():
     os.system('python /home/kobeni/Hanekawa.py')
