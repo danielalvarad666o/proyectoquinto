@@ -15,14 +15,14 @@ class Controller:
             self.eventHandler()
     
     def eventHandler(self) -> None:
-        message = SSEClient('http://192.168.119.155:3333/led/stream')
+        message = SSEClient('http://192.168.252.152:3333/led/stream')
         print(message)
         if(message):
             self.requestStatus()
 
     def requestStatus(self) -> None:
         print('Request Step')
-        response = requests.get('http://192.168.119.155:3333/led/status/1')
+        response = requests.get('http://192.168.252.152:3333/led/status/1')
         data = response.json()
         status = data['status']
         if status == 1:
