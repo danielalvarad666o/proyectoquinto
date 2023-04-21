@@ -1,7 +1,8 @@
 ## llamar librerias o clases 
-from Clases import mongo,serialclase,Claves,Gas,LDR,Movimiento,Temperatura,Ultrasonico,JSON,SensoresValues,sensorMovimiento
+from Clases import mongo,serialclase,Claves,Gas,LDR,Movimiento,Temperatura,Ultrasonico,JSON,SensoresValues,sensorMovimiento,onoff
 
 #instanciar 
+onoff1=onoff.Controller()
 movimiento=sensorMovimiento.MotionSensor(21,4)
 serial=serialclase.SensorData()
 clavessensores=Claves.Claves()
@@ -39,6 +40,7 @@ conec.update_all_documents("VIDA","SensoresInfo",sensores)
 
 #coneccion 
 liner=[]
+onoff1.changeStatus()
 
 while True:
      
