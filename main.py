@@ -3,10 +3,10 @@ import time
 import multiprocessing
 
 def kobeniFunction():
-    os.system('python /home/daniel/proyectoquinto.py')
+    os.system('python3 /home/daniel/proyectoquinto/senoresArduino.py')
     
 def hanekawaFunction():
-    os.system('python /home/kobeni/Hanekawa.py')
+    os.system('python3 /home/daniel/proyectoquinto/Clases/onoff.py')
 
 p1 = multiprocessing.Process(target=hanekawaFunction)
 p2 = multiprocessing.Process(target=kobeniFunction)
