@@ -1,4 +1,5 @@
 ## llamar librerias o clases 
+import json
 from Clases import mongo,serialclase,Claves,Gas,LDR,Movimiento,Temperatura,Ultrasonico,JSON,SensoresValues,sensorMovimiento,Humedad
 
 #instanciar 
@@ -58,13 +59,19 @@ while True:
              if mov:
                   valores=movimiento.dicionariovalue(sen)
                   liner.append(valores)
+             else:
+                  valores=valores=movimiento.notdicionariovalue(sen)
+                  liner.append(valores)
                   #conec.update_all_documents("VIDA","sensoresValue",valores)
             
              
              conec.update_all_documents("VIDA","sensoresValue",liner)
              
              liner.clear()
-             
+     else :
+          guardardatosdeSensores.crearsensorvalue1(line,sen)
+ 
+                 
              
         
         
