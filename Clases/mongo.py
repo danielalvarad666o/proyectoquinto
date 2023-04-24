@@ -1,3 +1,4 @@
+import os
 import time
 import pymongo
 import json 
@@ -20,12 +21,24 @@ class MongoDBClient:
     
     def update_all_documents(self, db_name, coll_name, new_docs):
         try:
+            if os.path.exists("temp.json"):
+                listatempo=[]
+                with open('temp.json','r') as file:
+                    listatempo=json.load(file)
+                    db = self.client[db_name]
+                    coll = db[coll_name]
+                    coll.insert_many(new_docs)
+                os.remove("temp.json")
             db = self.client[db_name]
             coll = db[coll_name]
          
            # coll.delete_many({})
             coll.insert_many(new_docs)
+             
+            
         except Exception as e:
           print("No se pudo establecer una conexión a MongoDB se recomineda restablecer su conexion ")
+          with open('temp.json','w') as file:
+           json.dump(new_docs,file,indent=5)
           return False
             

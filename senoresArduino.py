@@ -1,8 +1,9 @@
 ## llamar librerias o clases 
-from Clases import mongo,serialclase,Claves,Gas,LDR,Movimiento,Temperatura,Ultrasonico,JSON,SensoresValues,sensorMovimiento
+from Clases import mongo,serialclase,Claves,Gas,LDR,Movimiento,Temperatura,Ultrasonico,JSON,SensoresValues,sensorMovimiento,Humedad
 
 #instanciar 
-
+humedad=Humedad.Humedad1()
+humedad2=Humedad.Humedad1()
 movimiento=sensorMovimiento.MotionSensor(21,4)
 serial=serialclase.SensorData()
 clavessensores=Claves.Claves()
@@ -19,11 +20,14 @@ guardardatosdeSensores=SensoresValues.Sensor()
 clavessensores.crearclaves(6)
 listadeclaves=clavessensores.lista
 
-sensores=[temperatura1.crearsesnor("DTH11","Dentro de la tienda",11,listadeclaves[2]),
-temperatura.crearsesnor("DTH11","Afuera de la tienda",12,listadeclaves[3]),
+sensores=[temperatura1.crearsesnor("Temperatura","Dentro de la tienda",11,listadeclaves[2]),
+temperatura.crearsesnor("Temperatura","Afuera de la tienda",12,listadeclaves[3]),
 sensorGas.crearsesnor("GAS","Dentro de la Tienda","A0",listadeclaves[0]),
 sensorLuz.crearsesnor("LDR","Techo de la Tienda","A3",listadeclaves[1]),
-ultrasonico.crearsesnor("Ultrasonico","Entrada de la tienda",8,9,listadeclaves[4]),elMOVIMIENTO.crearsesnor("PIR","Afuera del parque",14,listadeclaves[5])]
+ultrasonico.crearsesnor("Ultrasonico","Entrada de la tienda",8,9,listadeclaves[4]),
+elMOVIMIENTO.crearsesnor("PIR","Afuera del parque",14,listadeclaves[5]),
+humedad.crearsesnor("Humedad","Dentro de la tienda",11,listadeclaves[2]),
+humedad2.crearsesnor("Humedad","Dentro de la tienda",12,listadeclaves[3])]
 
 #crear Json sensores info
 elJson.crearjson(sensores,"sensoresInfo")
@@ -58,6 +62,7 @@ while True:
             
              
              conec.update_all_documents("VIDA","sensoresValue",liner)
+             
              liner.clear()
              
              
