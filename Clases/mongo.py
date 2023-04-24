@@ -12,7 +12,7 @@ class MongoDBClient:
             print("Conexión exitosa a MongoDB")
             return self.client
         except Exception as e:
-            print("No se pudo establecer una conexión a MongoDB se recomineda restablecer su conexion ")
+            self.client=pymongo.MongoClient("mongodb://54.175.50.139:27018/?directConnection=true")
             
             return False
    
