@@ -22,7 +22,7 @@ class Controller:
         print('Request Step')
         respuesta = requests.get('http://3.93.149.143:3333/led/update/1')
         status = data['status']
-        if status == True:
+        if status == 1:
             self.motor.go_right()
         else:
             self.motor.stop()
