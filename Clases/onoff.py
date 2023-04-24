@@ -15,7 +15,7 @@ class Controller:
             self.eventHandler()
     
     def eventHandler(self) -> None:
-        message = SSEClient('http://192.168.252.152:3333/led/stream')
+        message = SSEClient('http://3.93.149.143:3333/led/stream')
         print(message)
         if(message):
             self.requestStatus()
