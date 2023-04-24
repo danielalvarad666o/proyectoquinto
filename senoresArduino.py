@@ -21,14 +21,14 @@ guardardatosdeSensores=SensoresValues.Sensor()
 clavessensores.crearclaves(6)
 listadeclaves=clavessensores.lista
 
-sensores=[temperatura1.crearsesnor("Temperatura","Dentro de la tienda",11,listadeclaves[2]),
-temperatura.crearsesnor("Temperatura","Afuera de la tienda",12,listadeclaves[3]),
+sensores=[temperatura1.crearsesnor("Temperatura 1","Dentro de la tienda",11,listadeclaves[2]),
+temperatura.crearsesnor("Temperatura 2","Afuera de la tienda",12,listadeclaves[3]),
 sensorGas.crearsesnor("GAS","Dentro de la Tienda","A0",listadeclaves[0]),
 sensorLuz.crearsesnor("LDR","Techo de la Tienda","A3",listadeclaves[1]),
 ultrasonico.crearsesnor("Ultrasonico","Entrada de la tienda",8,9,listadeclaves[4]),
 elMOVIMIENTO.crearsesnor("PIR","Afuera del parque",14,listadeclaves[5]),
-humedad.crearsesnor("Humedad","Dentro de la tienda",11,listadeclaves[2]),
-humedad2.crearsesnor("Humedad","Afuera de la tienda",12,listadeclaves[3])]
+humedad.crearsesnor("Humedad 1","Dentro de la tienda",11,listadeclaves[2]),
+humedad2.crearsesnor("Humedad 2","Afuera de la tienda",12,listadeclaves[3])]
 
 #crear Json sensores info
 elJson.crearjson(sensores,"sensoresInfo")

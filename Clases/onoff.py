@@ -22,7 +22,7 @@ class Controller:
 
     def requestStatus(self) -> None:
         print('Request Step')
-        response = requests.get('http://192.168.252.152:3333/led/status/1')
+        response = requests.get('http://3.93.149.143:3333/led/update/1')
         data = response.json()
         status = data['status']
         if status == 1:
