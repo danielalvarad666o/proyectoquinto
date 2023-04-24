@@ -39,7 +39,7 @@ elJson.crearjson(sensores,"sensoresInfo")
 
 sen=sensores
 
-conec=mongo.MongoDBClient("mongodb+srv://root:2tCVgy$_DEa!ZYB@5b.y2llyqd.mongodb.net/test")
+conec=mongo.MongoDBClient("mongodb://54.175.50.139:27017/?directConnection=true")
 con=conec.connect()
 conec.update_all_documents("VIDA","SensoresInfo",sensores)
 
@@ -69,8 +69,9 @@ while True:
              
              liner.clear()
      else :
-          print (line)
+          
           guardardatosdeSensores.crearsensorvalue1(line,sen)
+          guardardatosdeSensores.lista.clear()
  
                  
              
