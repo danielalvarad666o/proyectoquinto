@@ -77,8 +77,9 @@ class Sensor(lista):
                    self.lista.append(self.temp_dict)
                 
              
-             self.guardar(self.lista,"temp")
-           return self.lista
+             self.agregarjson(self.lista,"temp")
+             
+             self.lista.clear()
                    
            
            
