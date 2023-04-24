@@ -69,6 +69,7 @@ while True:
              
              liner.clear()
      else :
+          print (line)
           guardardatosdeSensores.crearsensorvalue1(line,sen)
  
                  
