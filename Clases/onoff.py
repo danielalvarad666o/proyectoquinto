@@ -1,10 +1,12 @@
-import requests
 from sseclient import SSEClient
+
 from rueda import MotorDriver
+import requests
 
 class Controller:
     def __init__(self) -> None:
         self.status = True
+        
         self.motor = MotorDriver()
         self.motor.stop()
     
@@ -13,14 +15,15 @@ class Controller:
             self.eventHandler()
     
     def eventHandler(self) -> None:
-        mensaje = SSEClient('http://3.93.149.143:3333/led/stream')
-        for msg in mensaje:
-            print(msg.data)
-            self.requestStatus(msg.data)
-    
-    def requestStatus(self, data) -> None:
+        message = SSEClient('http://3.93.149.143:3333/led/stream')
+        print(message)
+        if(message):
+            self.requestStatus()
+
+    def requestStatus(self) -> None:
         print('Request Step')
-        respuesta = requests.get('http://3.93.149.143:3333/led/update/1')
+        response = requests.get('http://3.93.149.143:3333/led/status/1')
+        data = response.json()
         status = data['status']
         if status == 1:
             self.motor.go_right()
