@@ -26,10 +26,10 @@ class MotionSensor:
             return False
         
     def dicionariovalue(self,tipo):
-         self.dicionario={"Clave":tipo[5].get('Clave'),"Sensor":{"Clave":tipo[5].get('Clave'),"Tipo":tipo[5].get('Tipo'),"Ubicacion":tipo[5].get('Ubicacion'),"Pines":tipo[5].get('Pines')},"Value":1,"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+         self.dicionario={"Clave":tipo[5].get('Clave'),"Sensor":{"Clave":tipo[5].get('Clave'),"Tipo":tipo[5].get('Tipo'),"Ubicacion":tipo[5].get('Ubicacion'),"Pines":tipo[5].get('Pines')},"Value":"1","Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
          return self.dicionario
      
     def notdicionariovalue(self,tipo):
-         self.dicionario={"Clave":tipo[5].get('Clave'),"Sensor":{"Clave":tipo[5].get('Clave'),"Tipo":tipo[5].get('Tipo'),"Ubicacion":tipo[5].get('Ubicacion'),"Pines":tipo[5].get('Pines')},"Value":0,"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+         self.dicionario={"Clave":tipo[5].get('Clave'),"Sensor":{"Clave":tipo[5].get('Clave'),"Tipo":tipo[5].get('Tipo'),"Ubicacion":tipo[5].get('Ubicacion'),"Pines":tipo[5].get('Pines')},"Value":"0","Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
          return self.dicionario
 
