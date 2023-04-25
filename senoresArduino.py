@@ -77,6 +77,7 @@ while True:
      else :
           
           guardardatosdeSensores.crearsensorvalue1(line,sen)
+     time.sleep(50)
           
           
           
