@@ -79,7 +79,9 @@ class Sensor(lista):
                    
                    self.temp_dict={"Clave":sesnorinfo[4].get('Clave'),"Sensor":{"Clave":sesnorinfo[4].get('Clave'),"Tipo":sesnorinfo[4].get('Tipo'),"Ubicacion":sesnorinfo[4].get('Ubicacion'),"Pines":sesnorinfo[4].get('Pines')},"Value":parts[1],"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
                    self.lista.append(self.temp_dict)
-                
+               elif str(parts[0]=="Luz 0 :"):
+                   self.temp_dict={"Clave":sesnorinfo[3].get('Clave'),"Sensor":{"Clave":sesnorinfo[3].get('Clave'),"Tipo":sesnorinfo[3].get('Tipo'),"Ubicacion":sesnorinfo[3].get('Ubicacion'),"Pines":sesnorinfo[3].get('Pines')},"Value":parts[1],"Fecha": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+                   self.lista.append(self.temp_dict)
              
                for j in self.lista:
                   self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
