@@ -7,22 +7,22 @@ class MongoDBClient:
         self.uri = uri
     
     def connect(self):
-     try:
+      try:
         self.client = pymongo.MongoClient(self.uri)
         print("Conexión exitosa a MongoDB")
-        return self.client
-     except Exception as e:
+        return True
+      except Exception as e:
         print("No se puede conectar al primer servidor:", e)
 
-     try:
+      try:
         self.client = pymongo.MongoClient("mongodb://54.175.50.139:27018/?directConnection=true")
         print("Conexión exitosa a MongoDB")
-        return self.client
-     except Exception as e:
+        return True
+      except Exception as e:
         print("No se puede conectar al segundo servidor:", e)
 
-     print("No se puede conectar a ningún servidor")
-     return False
+      print("No se puede conectar a ningún servidor")
+      return False
 
    
     
@@ -45,9 +45,16 @@ class MongoDBClient:
             coll.insert_many(new_docs)
              
             
+      
         except Exception as e:
-          print("No se pudo establecer una conexión a MongoDB se recomineda restablecer su conexion ")
-          with open('temp.json','w') as file:
-           json.dump(new_docs,file,indent=5)
-          return False
+        # If the update fails, write new_docs to "temp.json"
+         try:
+            with open('temp.json', 'r+') as file:
+                data = json.load(file)
+                data.update(new_docs)
+                file.seek(0)
+                json.dump(data, file, indent=5)
+         except FileNotFoundError:
+            with open('temp.json', 'w') as file:
+                json.dump(new_docs, file, indent=5)
             
