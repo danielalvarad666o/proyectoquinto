@@ -5,6 +5,7 @@ import json
 from Clases.JSON import Jsonn
 class MongoDBClient(Jsonn):
     def __init__(self, uri):
+        self.lista2=[]
         self.uri = uri
     
     def connect(self):
@@ -48,6 +49,11 @@ class MongoDBClient(Jsonn):
             
       
         except Exception as e:
+              for j in new_docs:
+                  self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
+             
+              self.agregarjson(self.lista2,"temp")
+              
         # If the update fails, write new_docs to "temp.json"
-         print(new_docs)
+         
             
