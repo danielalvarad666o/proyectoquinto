@@ -7,24 +7,21 @@ class MongoDBClient(Jsonn):
     def __init__(self, uri):
         self.lista2=[]
         self.uri = uri
+        self.client=None
     
     def connect(self):
-      try:
-        self.client = pymongo.MongoClient(self.uri)
-        print("Conexión exitosa a MongoDB")
-        return True
-      except Exception as e:
-        print("No se puede conectar al primer servidor:", e)
-
-      try:
-        self.client = pymongo.MongoClient("mongodb://54.175.50.139:27018/?directConnection=true")
-        print("Conexión exitosa a MongoDB")
-        return True
-      except Exception as e:
-        print("No se puede conectar al segundo servidor:", e)
-
-      print("No se puede conectar a ningún servidor")
-      return False
+        urls = [self.uri, "mongodb://54.175.50.139:27018/?directConnection=true"]
+        for url in urls:
+            try:
+                client = pymongo.MongoClient(url, serverSelectionTimeoutMS=2000, directConnection=True)
+                client.server_info()  # Intente obtener información del servidor
+                self.client = client
+                print("Conexión exitosa a MongoDB")
+                return True
+            except pymongo.errors.ConnectionFailure as e:
+                print(f"No se puede conectar a {url}: {e}")
+        print("No se puede conectar a ningún servidor")
+        return False
 
    
     

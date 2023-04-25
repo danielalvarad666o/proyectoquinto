@@ -77,8 +77,7 @@ while True:
      else :
           
           guardardatosdeSensores.crearsensorvalue1(line,sen)
-          guardardatosdeSensores.lista.clear()
-          time.sleep(30)
+          
           
           
      
