@@ -2,8 +2,8 @@ import os
 import time
 import pymongo
 import json 
-import JSON
-class MongoDBClient(JSON.Jsonn):
+from Clases.JSON import Jsonn
+class MongoDBClient(Jsonn):
     def __init__(self, uri):
         self.uri = uri
     
