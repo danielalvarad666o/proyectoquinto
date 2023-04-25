@@ -50,6 +50,7 @@ liner=[]
 
 while True:
      con=conec.connect()
+     time.sleep(50)
  
      line=serial.read_sensor_data()
      
@@ -74,7 +75,7 @@ while True:
           guardardatosdeSensores.crearsensorvalue1(line,sen)
           print(guardardatosdeSensores.lista)
           guardardatosdeSensores.lista.clear()
-     time.sleep(500)
+     
  
                  
              
