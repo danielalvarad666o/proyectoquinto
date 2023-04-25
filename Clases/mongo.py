@@ -54,13 +54,18 @@ class MongoDBClient(Jsonn):
         
         # Add formatted documents to lista2
               self.lista2 = []
+              otra=[]
               for j in new_docs:
                self.lista2.append({"Clave": format(j.get('Clave')),
                                  "Sensor": format(j.get('Sensor')),
                                  "Value": format(j.get('Value')),
                                  "Fecha": format(j.get('Fecha'))})
               if os.path.exists("temp.json"):
-                 self.agregarjson(self.lista2,"temp")
+                 otra=self.leerjson("temp")
+                 for pp in otra:
+                  self.lista2.append(pp)
+                 self.crearjson(self.lista2,"temp")
+                  
               else: 
                  self.crearjson(self.lista2,"temp")
         
