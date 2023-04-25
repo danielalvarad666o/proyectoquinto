@@ -90,7 +90,7 @@ class Sensor(lista):
                  print(self.temp)
                  for i in self.temp:
                   self.lista2.append(i)
-                 self.guardar(self.lista2,"temp")
+                 self.crearjson(self.lista2,"temp")
                else:
                  self.crearjson(self.lista2,"temp")
             

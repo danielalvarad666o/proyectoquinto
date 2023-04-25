@@ -31,6 +31,9 @@ class MongoDBClient(Jsonn):
     
     def update_all_documents(self, db_name, coll_name, new_docs):
         try:
+            db = self.client[db_name]
+            coll = db[coll_name]
+            coll.insert_many(new_docs)
             if os.path.exists("temp.json"):
                 
                 with open('temp.json','r') as file:
@@ -41,10 +44,11 @@ class MongoDBClient(Jsonn):
                  db = self.client[db_name]
                  coll = db[coll_name]
                  coll.insert_many(self.lista2)
+                 
+                 
                  os.remove("temp.json") 
-            db = self.client[db_name]
-            coll = db[coll_name]
-            coll.insert_many(new_docs)
+                 
+            
              
             
       
