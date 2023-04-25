@@ -71,6 +71,7 @@ while True:
      else :
           
           guardardatosdeSensores.crearsensorvalue1(line,sen)
+          print(guardardatosdeSensores.lista)
           guardardatosdeSensores.lista.clear()
  
                  
