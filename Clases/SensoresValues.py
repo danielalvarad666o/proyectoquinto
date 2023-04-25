@@ -82,7 +82,7 @@ class Sensor(lista):
              
                for j in self.lista:
                   self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
-             self.temp=self.leerjson("temp")
+             self.temp=super().leerjson("temp")
              for i in self.temp:
                  self.lista2.append(i)
              self.guardar(self.lista2,"temp")
