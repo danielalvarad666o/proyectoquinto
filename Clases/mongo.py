@@ -13,7 +13,7 @@ class MongoDBClient(Jsonn):
         
     
     def connect(self):
-        urls = [self.uri, "mongodb://54.175.50.139:27018/?directConnection=true"]
+        urls = [self.uri, "mongodb://54.174.208.18:27018/?directConnection=true"]
         for url in urls:
             try:
                 client = pymongo.MongoClient(url, serverSelectionTimeoutMS=2000, directConnection=True)
