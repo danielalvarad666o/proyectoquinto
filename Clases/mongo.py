@@ -37,6 +37,7 @@ class MongoDBClient(Jsonn):
             if os.path.exists("temp.json"):
               lista=self.leerjson("temp")
               coll.insert_many(lista)
+              os.remove("temp.json")
              
          
            
