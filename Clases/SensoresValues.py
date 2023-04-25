@@ -85,13 +85,15 @@ class Sensor(lista):
                   self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
             
             
-             if os.path.exists("temp.json"):
-               self.temp=self.leerjson("temp")
-               for i in self.temp:
-                 self.lista2.append(i)
+               if os.path.exists("temp.json"):
+                 self.temp=self.leerjson("temp")
+                 print(self.temp)
+                 for i in self.temp:
+                  self.lista2.append(i)
                  self.guardar(self.lista2,"temp")
-           else:
-               self.crearjson(self.lista2,"temp")
+               else:
+                 self.crearjson(self.lista2,"temp")
+            
              
                    
            
