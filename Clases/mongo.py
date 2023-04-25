@@ -1,4 +1,5 @@
 import os
+import threading
 import time
 import pymongo
 import json 
@@ -29,49 +30,49 @@ class MongoDBClient(Jsonn):
     
     
     
-    def update_all_documents(self, db_name, coll_name, new_docs):
-        try:
-            db = self.client[db_name]
-            coll = db[coll_name]
-            coll.insert_many(new_docs)
-            if os.path.exists("temp.json"):
+    # def update_all_documents(self, db_name, coll_name, new_docs):
+    #     try:
+    #         db = self.client[db_name]
+    #         coll = db[coll_name]
+    #         coll.insert_many(new_docs)
+    #         if os.path.exists("temp.json"):
                 
-                with open('temp.json','r') as file:
-                    listatempo=json.load(file)
-                if len(listatempo)>=1:
-                 for kk in listatempo:
-                  self.lista2=kk
-                 db = self.client[db_name]
-                 coll = db[coll_name]
-                 coll.insert_many(self.lista2)
+    #             with open('temp.json','r') as file:
+    #                 listatempo=json.load(file)
+    #             if len(listatempo)>=1:
+    #              for kk in listatempo:
+    #               self.lista2=kk
+    #              db = self.client[db_name]
+    #              coll = db[coll_name]
+    #              coll.insert_many(self.lista2)
                  
                  
-                 os.remove("temp.json") 
+    #              os.remove("temp.json") 
                  
             
              
             
       
-        except Exception as e:
+    #     except Exception as e:
               
-              print("No se puede conectar a ningún servidor")
+    #           print("No se puede conectar a ningún servidor")
         
-        # Add formatted documents to lista2
-              self.lista2 = []
-              otra=[]
-              for j in new_docs:
-               self.lista2.append({"Clave": format(j.get('Clave')),
-                                 "Sensor": format(j.get('Sensor')),
-                                 "Value": format(j.get('Value')),
-                                 "Fecha": format(j.get('Fecha'))})
-              if os.path.exists("temp.json"):
-                 otra=self.leerjson("temp")
-                 for pp in otra:
-                  self.lista2.append(pp)
-                 self.crearjson(self.lista2,"temp")
+    #     # Add formatted documents to lista2
+    #           self.lista2 = []
+    #           otra=[]
+    #           for j in new_docs:
+    #            self.lista2.append({"Clave": format(j.get('Clave')),
+    #                              "Sensor": format(j.get('Sensor')),
+    #                              "Value": format(j.get('Value')),
+    #                              "Fecha": format(j.get('Fecha'))})
+    #           if os.path.exists("temp.json"):
+    #              otra=self.leerjson("temp")
+    #              for pp in otra:
+    #               self.lista2.append(pp)
+    #              self.crearjson(self.lista2,"temp")
                   
-              else: 
-                 self.crearjson(self.lista2,"temp")
+    #           else: 
+    #              self.crearjson(self.lista2,"temp")
         
         # Save documents to temp.json
               
@@ -90,5 +91,61 @@ class MongoDBClient(Jsonn):
               #   self.crearjson(self.lista2,"temp")
               
         # If the update fails, write new_docs to "temp.json"
+        import threading
+
+
+    def update_all_documents(self, db_name, coll_name, new_docs):
+        try:
+            db = self.client[db_name]
+            coll = db[coll_name]
+            coll.insert_many(new_docs)
+            if os.path.exists("temp.json"):
+              
+                with open('temp.json','r') as file:
+                    listatempo=json.load(file)
+                if len(listatempo)>=1:
+                    for kk in listatempo:
+                        self.lista2=kk
+                    db = self.client[db_name]
+                    coll = db[coll_name]
+                    coll.insert_many(self.lista2)
+                    os.remove("temp.json") 
+                
+        except Exception as e:
+            print("No se puede conectar a ningún servidor")
+            self.lista2 = []
+            otra=[]
+            for j in new_docs:
+                self.lista2.append({"Clave": format(j.get('Clave')),
+                                    "Sensor": format(j.get('Sensor')),
+                                    "Value": format(j.get('Value')),
+                                    "Fecha": format(j.get('Fecha'))})
+            if os.path.exists("temp.json"):
+                otra=self.leerjson("temp")
+                for pp in otra:
+                    self.lista2.append(pp)
+                self.crearjson(self.lista2,"temp")
+                
+            else: 
+                self.crearjson(self.lista2,"temp")
+        
+        # Crear un hilo para enviar los datos a la base de datos
+        t = threading.Thread(target=self._send_data_to_db, args=(db_name, coll_name))
+        t.start()
+        
+    def _send_data_to_db(self, db_name, coll_name):
+        db = self.client[db_name]
+        coll = db[coll_name]
+        if os.path.exists("temp.json"):
+            with open('temp.json','r') as file:
+                listatempo=json.load(file)
+            if len(listatempo)>=1:
+                for kk in listatempo:
+                    self.lista2=kk
+                coll.insert_many(self.lista2)
+                os.remove("temp.json") 
+        else:
+            coll.insert_many(self.lista2)
+
          
             
