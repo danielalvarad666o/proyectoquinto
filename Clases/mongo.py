@@ -60,10 +60,10 @@ class MongoDBClient(Jsonn):
                print(self.lista2)
              
              
-              # if os.path.exists("temp.json"):
-              #  self.agregarjson(self.lista2,"temp")
-              # else: 
-              #   self.crearjson(self.lista2,"temp")
+               if os.path.exists("temp.json"):
+                self.agregarjson(self.lista2,"temp")
+               else: 
+                self.crearjson(self.lista2,"temp")
               
         # If the update fails, write new_docs to "temp.json"
          
