@@ -5,6 +5,7 @@ import json
 from Clases.JSON import Jsonn
 class MongoDBClient(Jsonn):
     def __init__(self, uri):
+        super().__init__()
         self.lista2=[]
         self.uri = uri
         self.client=None
@@ -51,10 +52,14 @@ class MongoDBClient(Jsonn):
             
       
         except Exception as e:
-              print(new_docs)
+              
               # print("No se puede conectar a ningún servidor")
-              # for j in new_docs:
-              #     self.lista2.append({"Clave":format(j.get('Clave')),"Sensor":format(j.get('Sensor')),"Value":format(j.get('Value')),"Fecha":format(j.get('Fecha'))})
+               for j in new_docs:
+                   self.lista2.append({"Clave":format(j.get('Clave')),"Sensor":format(j.get('Sensor')),"Value":format(j.get('Value')),"Fecha":format(j.get('Fecha'))})
+                
+               print(self.lista2)
+             
+             
               # if os.path.exists("temp.json"):
               #  self.agregarjson(self.lista2,"temp")
               # else: 
