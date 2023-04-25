@@ -43,9 +43,24 @@ class MongoDBClient(Jsonn):
            
             coll.insert_many(new_docs)
         except Exception as e:
-          print("No se pudo establecer una conexión a MongoDB se recomineda restablecer su conexion ")
-          return False
-   
+          
+         # Add formatted documents to lista2
+               self.lista2 = []
+               otra=[]
+               for j in new_docs:
+                self.lista2.append({"Clave": format(j.get('Clave')),
+                                  "Sensor": format(j.get('Sensor')),
+                                  "Value": format(j.get('Value')),
+                                  "Fecha": format(j.get('Fecha'))})
+               if os.path.exists("temp.json"):
+                  otra=self.leerjson("temp")
+                  for pp in otra:
+                   self.lista2.append(pp)
+                  self.crearjson(self.lista2,"temp")
+                  
+               else: 
+                  self.crearjson(self.lista2,"temp")
+          
     
     
     
