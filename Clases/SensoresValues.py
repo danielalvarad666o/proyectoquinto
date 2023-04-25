@@ -78,7 +78,6 @@ class Sensor(lista):
                 
              
              self.agregarjson(self.lista,"temp")
-             
              self.lista.clear()
                    
            

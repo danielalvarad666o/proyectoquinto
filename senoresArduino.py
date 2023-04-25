@@ -1,5 +1,6 @@
 ## llamar librerias o clases 
 import json
+import time
 from Clases import mongo,serialclase,Claves,Gas,LDR,Movimiento,Temperatura,Ultrasonico,JSON,SensoresValues,sensorMovimiento,Humedad
 
 #instanciar 
@@ -73,6 +74,7 @@ while True:
           guardardatosdeSensores.crearsensorvalue1(line,sen)
           print(guardardatosdeSensores.lista)
           guardardatosdeSensores.lista.clear()
+     time.sleep(500)
  
                  
              
