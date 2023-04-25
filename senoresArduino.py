@@ -54,7 +54,7 @@ while True:
      if not os.path.exists("sensoresInfo.json"):
       conec.update_all_documents("VIDA","SensoresInfo",sensores)
      con=conec.connect()
-     time.sleep(50)
+     
  
      line=serial.read_sensor_data()
      
