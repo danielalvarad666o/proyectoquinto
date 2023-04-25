@@ -38,17 +38,13 @@ class MongoDBClient(Jsonn):
                 if len(listatempo)>=1:
                  for kk in listatempo:
                   self.lista2=kk
-                 for mm in new_docs:
-                  self.lista2=mm
                  db = self.client[db_name]
                  coll = db[coll_name]
                  coll.insert_many(self.lista2)
-                 os.remove("temp.json")
-                  
-            else:
-             db = self.client[db_name]
-             coll = db[coll_name]
-             coll.insert_many(new_docs)
+                 os.remove("temp.json") 
+            db = self.client[db_name]
+            coll = db[coll_name]
+            coll.insert_many(new_docs)
              
             
       
