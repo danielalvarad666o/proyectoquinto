@@ -7,14 +7,23 @@ class MongoDBClient:
         self.uri = uri
     
     def connect(self):
-        try:
-            self.client = pymongo.MongoClient(self.uri)
-            print("Conexión exitosa a MongoDB")
-            return self.client
-        except Exception as e:
-            self.client=pymongo.MongoClient("mongodb://54.175.50.139:27018/?directConnection=true")
-            
-            return False
+     try:
+        self.client = pymongo.MongoClient(self.uri)
+        print("Conexión exitosa a MongoDB")
+        return self.client
+     except Exception as e:
+        print("No se puede conectar al primer servidor:", e)
+
+     try:
+        self.client = pymongo.MongoClient("mongodb://54.175.50.139:27018/?directConnection=true")
+        print("Conexión exitosa a MongoDB")
+        return self.client
+     except Exception as e:
+        print("No se puede conectar al segundo servidor:", e)
+
+     print("No se puede conectar a ningún servidor")
+     return False
+
    
     
     
