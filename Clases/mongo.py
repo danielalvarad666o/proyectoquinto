@@ -56,7 +56,8 @@ class MongoDBClient(Jsonn):
               # print("No se puede conectar a ningún servidor")
                for j in new_docs:
                    self.lista2.append({"Clave":format(j.get('Clave')),"Sensor":format(j.get('Sensor')),"Value":format(j.get('Value')),"Fecha":format(j.get('Fecha'))})
-                
+                   print("")
+                   print(self.lista2)
                
              
              
