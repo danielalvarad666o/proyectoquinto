@@ -57,7 +57,7 @@ class MongoDBClient(Jsonn):
                for j in new_docs:
                    self.lista2.append({"Clave":format(j.get('Clave')),"Sensor":format(j.get('Sensor')),"Value":format(j.get('Value')),"Fecha":format(j.get('Fecha'))})
                 
-               print(self.lista2)
+               
              
              
                if os.path.exists("temp.json"):
