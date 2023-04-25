@@ -8,6 +8,7 @@ class MongoDBClient(Jsonn):
         self.lista2=[]
         self.uri = uri
         self.client=None
+        self.listatempo=[]
     
     def connect(self):
         urls = [self.uri, "mongodb://54.175.50.139:27018/?directConnection=true"]
@@ -30,12 +31,13 @@ class MongoDBClient(Jsonn):
     def update_all_documents(self, db_name, coll_name, new_docs):
         try:
             if os.path.exists("temp.json"):
-                listatempo=[]
+                print("Encontramos temp")
                 with open('temp.json','r') as file:
-                    listatempo=json.load(file)
-                    db = self.client[db_name]
-                    coll = db[coll_name]
-                    coll.insert_many(new_docs)
+                    self.listatempo=json.load(file)
+                db = self.client[db_name]
+                coll = db[coll_name]
+                coll.insert_many(self.listatempo)
+                
                 os.remove("temp.json")
             db = self.client[db_name]
             coll = db[coll_name]
@@ -46,10 +48,11 @@ class MongoDBClient(Jsonn):
             
       
         except Exception as e:
+              print("No se puede conectar a ningún servidor")
               for j in new_docs:
                   self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
              
-              self.agregarjson(self.lista2,"temp")
+              self.crearjson(self.lista2,"temp")
               
         # If the update fails, write new_docs to "temp.json"
          
