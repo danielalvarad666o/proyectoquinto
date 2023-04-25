@@ -2,7 +2,8 @@ import os
 import time
 import pymongo
 import json 
-class MongoDBClient:
+import JSON
+class MongoDBClient(JSON.Jsonn):
     def __init__(self, uri):
         self.uri = uri
     
@@ -48,13 +49,5 @@ class MongoDBClient:
       
         except Exception as e:
         # If the update fails, write new_docs to "temp.json"
-         try:
-            with open('temp.json', 'r+') as file:
-                data = json.load(file)
-                data.update(new_docs)
-                file.seek(0)
-                json.dump(data, file, indent=5)
-         except FileNotFoundError:
-            with open('temp.json', 'w') as file:
-                json.dump(new_docs, file, indent=5)
+         self.agregarjson(new_docs,"temp")
             
