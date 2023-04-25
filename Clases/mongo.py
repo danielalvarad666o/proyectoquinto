@@ -30,10 +30,16 @@ class MongoDBClient(Jsonn):
       
     def update_all_documents(self, db_name, coll_name, new_docs):
         try:
+            
             db = self.client[db_name]
             coll = db[coll_name]
+            lista=[]
+            if os.path.exists("temp.json"):
+              lista=self.leerjson("temp")
+              coll.insert_many(lista)
+             
          
-           # coll.delete_many({})
+           
             coll.insert_many(new_docs)
         except Exception as e:
           print("No se pudo establecer una conexión a MongoDB se recomineda restablecer su conexion ")
