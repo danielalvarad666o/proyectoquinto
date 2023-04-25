@@ -49,5 +49,5 @@ class MongoDBClient(Jsonn):
       
         except Exception as e:
         # If the update fails, write new_docs to "temp.json"
-         self.agregarjson(new_docs,"temp")
+         print(new_docs)
             

@@ -6,6 +6,7 @@ from Clases.Lista import lista
 class Sensor(lista):
     def __init__(self):
         super().__init__()
+        self.lista2=[]  
         self.temp_dict={}
         
    
@@ -45,7 +46,8 @@ class Sensor(lista):
              self.guardar(self.lista,"sensorValue")
            return self.lista
     
-    def crearsensorvalue1(self,line,sesnorinfo):  
+    def crearsensorvalue1(self,line,sesnorinfo):
+           
            for line in line.splitlines():
              parts = line.split(":")
              if len(parts) == 2:
@@ -77,7 +79,10 @@ class Sensor(lista):
                    self.lista.append(self.temp_dict)
                 
              
-             self.agregarjson(self.lista,"temp")
+               for j in self.lista:
+                  self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
+             
+             self.agregarjson(self.lista2,"temp")
              self.lista.clear()
                    
            
