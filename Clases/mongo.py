@@ -35,14 +35,15 @@ class MongoDBClient(Jsonn):
                 
                 with open('temp.json','r') as file:
                     listatempo=json.load(file)
-                for kk in listatempo:
+                if len(listatempo)>=1:
+                 for kk in listatempo:
                   self.lista2=kk
-                for mm in new_docs:
+                 for mm in new_docs:
                   self.lista2=mm
-                db = self.client[db_name]
-                coll = db[coll_name]
-                coll.insert_many(self.lista2)
-                os.remove("temp.json")
+                 db = self.client[db_name]
+                 coll = db[coll_name]
+                 coll.insert_many(self.lista2)
+                 os.remove("temp.json")
                   
             else:
              db = self.client[db_name]
@@ -53,18 +54,35 @@ class MongoDBClient(Jsonn):
       
         except Exception as e:
               
+              print("No se puede conectar a ningún servidor")
+        
+        # Add formatted documents to lista2
+              self.lista2 = []
+              for j in new_docs:
+               self.lista2.append({"Clave": format(j.get('Clave')),
+                                 "Sensor": format(j.get('Sensor')),
+                                 "Value": format(j.get('Value')),
+                                 "Fecha": format(j.get('Fecha'))})
+              if os.path.exists("temp.json"):
+                 self.agregarjson(self.lista2,"temp")
+              else: 
+                 self.crearjson(self.lista2,"temp")
+        
+        # Save documents to temp.json
+              
               # print("No se puede conectar a ningún servidor")
-               for j in new_docs:
-                   self.lista2.append({"Clave":format(j.get('Clave')),"Sensor":format(j.get('Sensor')),"Value":format(j.get('Value')),"Fecha":format(j.get('Fecha'))})
-                   print("")
-                   print(self.lista2)
+              # if len(new_docs)>=1:
+              #  for j in new_docs:
+              #      self.lista2.append({"Clave":format(j.get('Clave')),"Sensor":format(j.get('Sensor')),"Value":format(j.get('Value')),"Fecha":format(j.get('Fecha'))})
+              #      print("")
+              #      print(self.lista2)
                
              
              
-               if os.path.exists("temp.json"):
-                self.agregarjson(self.lista2,"temp")
-               else: 
-                self.crearjson(self.lista2,"temp")
+              #  if os.path.exists("temp.json"):
+              #   self.agregarjson(self.lista2,"temp")
+              #  else: 
+              #   self.crearjson(self.lista2,"temp")
               
         # If the update fails, write new_docs to "temp.json"
          
