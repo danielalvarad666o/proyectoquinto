@@ -53,7 +53,7 @@ class MongoDBClient(Jsonn):
         except Exception as e:
               print("No se puede conectar a ningún servidor")
               for j in new_docs:
-                  self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
+                  self.lista2.append(j)
              
               self.crearjson(self.lista2,"temp")
               
