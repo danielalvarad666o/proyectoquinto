@@ -54,8 +54,10 @@ class MongoDBClient(Jsonn):
               print("No se puede conectar a ningún servidor")
               for j in new_docs:
                   self.lista2.append(j)
-             
-              self.crearjson(self.lista2,"temp")
+              if os.path.exists("temp.json"):
+               self.agregarjson(self.lista2,"temp")
+              else: 
+                self.crearjson(self.lista2,"temp")
               
         # If the update fails, write new_docs to "temp.json"
          
