@@ -82,7 +82,9 @@ class Sensor(lista):
                for j in self.lista:
                   self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
              
-             self.agregarjson(self.lista2,"temp")
+             for i in self.leerjson("temp"):
+                 self.lista2.append(i)
+             self.guardar(self.lista2,"temp")
              
                    
            
