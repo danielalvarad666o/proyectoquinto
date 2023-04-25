@@ -34,10 +34,15 @@ class MongoDBClient(Jsonn):
                 
                 with open('temp.json','r') as file:
                     listatempo=json.load(file)
+                for kk in listatempo:
+                  self.lista2=kk
+                for mm in new_docs:
+                  self.lista2=mm
                 db = self.client[db_name]
                 coll = db[coll_name]
-                coll.insert_many(listatempo)
+                coll.insert_many(self.lista2)
                 os.remove("temp.json")
+                  
             else:
              db = self.client[db_name]
              coll = db[coll_name]
