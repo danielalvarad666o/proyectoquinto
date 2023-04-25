@@ -52,7 +52,7 @@ class MongoDBClient(Jsonn):
               for j in new_docs:
                   self.lista2.append({"Clave":j.get('Clave'),"Sensor":j.get('Sensor'),"Value":j.get('Value'),"Fecha":j.get('Fecha')})
              
-              self.crearjson(self.lista2,"temp")
+              self.agregarjson(self.lista2,"temp")
               
         # If the update fails, write new_docs to "temp.json"
          
