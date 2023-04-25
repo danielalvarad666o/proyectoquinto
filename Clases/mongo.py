@@ -2,6 +2,7 @@ import os
 import threading
 import time
 import pymongo
+import threading
 import json 
 from Clases.JSON import Jsonn
 class MongoDBClient(Jsonn):
@@ -91,7 +92,7 @@ class MongoDBClient(Jsonn):
               #   self.crearjson(self.lista2,"temp")
               
         # If the update fails, write new_docs to "temp.json"
-        import threading
+        
 
 
     def update_all_documents(self, db_name, coll_name, new_docs):
