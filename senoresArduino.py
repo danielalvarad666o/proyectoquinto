@@ -51,7 +51,7 @@ liner=[]
 
 while True:
      
-     conec=mongo.MongoDBClient("mongodb://54.175.50.139:27017/?directConnection=true")
+     conec=mongo.MongoDBClient("mongodb://54.174.208.18:27017/?directConnection=true")
      
      if not os.path.exists("sensoresInfo.json"):
       conec.update_all_documents("VIDA","SensoresInfo",sensores)
